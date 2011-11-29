@@ -1,0 +1,2 @@
+module KanbaneryUpdatesHelper
+end

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129174939) do
+ActiveRecord::Schema.define(:version => 20111129184745) do
+
+  create_table "kanbanery_updates", :force => true do |t|
+    t.integer  "project_mapping_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "open_id_associations", :force => true do |t|
     t.binary  "server_url", :null => false

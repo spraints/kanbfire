@@ -3,6 +3,8 @@ class ProjectMapping < ActiveRecord::Base
 
   before_save :ensure_token
 
+  has_many :kanbanery_updates
+
   def ensure_token
     while self.token.blank?
       token = SecureRandom.base64(15).tr('+/=lIO0', 'pqrsxyz')

@@ -9,6 +9,7 @@ Kanbfire::Application.routes.draw do
   constraints logged_in do
     root :to => 'dashboards#show'
     resources :project_mappings
+    get 'project_mappings/:project_mapping_id/log' => 'kanbanery_updates#index', :as => :kanbanery_log
     match 'todo/:id' => 'todo#todo', :as => :new_campfire_message_test
   end
 
