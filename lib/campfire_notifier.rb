@@ -13,7 +13,13 @@ class CampfireNotifier
     # With an API token for kanbanery, we could get some other goodies,
     # like the name of the user, project, etc.
     resource = params[:resource]
-    "[kanbanery] #{resource[:type]} #{resource[:id]} \"#{resource[:title]}\" was updated. #{resource[:global_in_context_url]}"
+    '[kanbanery] ' +
+      case resource[:type]
+      when 'LoggedTaskEvent'
+        "#{resource[:name].humanize} https://kanbanery.com/tasks/#{resource[:task_id]}/in-context"
+      else
+        "#{resource[:type]} #{resource[:id]} \"#{resource[:title]}\" was updated. #{resource[:global_in_context_url]}"
+      end
   end
 
   def say message
