@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129184745) do
+ActiveRecord::Schema.define(:version => 20111129200408) do
 
   create_table "kanbanery_updates", :force => true do |t|
     t.integer  "project_mapping_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20111129184745) do
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "campfire_subdomain"
   end
 
 end

@@ -14,6 +14,7 @@ class KanbaneryUpdatesController < ApplicationController
 
   def create
     kanbanery_updates.create :body => params.inspect
+    CampfireNotifier.new(project_mapping).notify(params)
     head :ok
   end
 end
