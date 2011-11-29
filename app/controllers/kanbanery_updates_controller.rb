@@ -13,7 +13,7 @@ class KanbaneryUpdatesController < ApplicationController
   expose(:kanbanery_updates) { project_mapping.kanbanery_updates }
 
   def create
-    kanbanery_updates.create params.inspect
+    kanbanery_updates.create :body => params.inspect
     head :ok
   end
 end
