@@ -1,3 +1,5 @@
+# This is based on the example from ruby-openid
+# https://github.com/openid/ruby-openid/tree/master/examples/active_record_openid_store
 require 'openid/store/interface'
 
 module OpenID
