@@ -1,5 +1,5 @@
 class ProjectMapping < ActiveRecord::Base
-  attr_accessible :campfire_token, :campfire_room_name
+  attr_accessible :campfire_subdomain, :campfire_token, :campfire_room_name
 
   before_save :ensure_token
 
