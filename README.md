@@ -46,4 +46,11 @@ Log into kanbanery and go to the settings for your project.
 Go to the "URL Live Update" section, click "Add new", and
 paste the url you copied. Click "Add", then click "Active".
 
+= Notes
 
+There are better ways to do a lot of this, e.g. using
+the auth token that kanbanery provides, and making the
+whole thing look nicer.
+
+This was what I dashed off, trying to get something
+in place.
