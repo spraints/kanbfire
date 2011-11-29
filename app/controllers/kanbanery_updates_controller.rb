@@ -14,5 +14,6 @@ class KanbaneryUpdatesController < ApplicationController
 
   def create
     kanbanery_updates.create :body => request.body
+    head :ok
   end
 end
