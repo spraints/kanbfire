@@ -1,0 +1,9 @@
+= form_for project_mapping do |f|
+  .field
+    = f.label :campfire_token
+    = f.text_field :campfire_token
+  .field
+    = f.label :campfire_room_name
+    = f.text_field :campfire_room_name
+  = f.submit
+  = link_to 'Cancel', root_path

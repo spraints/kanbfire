@@ -1,0 +1,10 @@
+%li
+  Notifications to room
+  == "#{project_mapping.campfire_room_name}"
+  .actions
+    .action= link_to 'Edit', edit_project_mapping_path(project_mapping)
+    .action= link_to 'Remove', project_mapping_path(project_mapping), :method => :delete, :confirm => 'Are you sure?'
+    .action= link_to 'Test', new_campfire_message_test_path(project_mapping)
+    .action
+      Copy this url:
+      = link_to 'Live Subscription', kanbanery_url(project_mapping.token)

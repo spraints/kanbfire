@@ -8,9 +8,13 @@
 </head>
 <body>
 
+  <p>
   You are <%= session[:email] %>.
+  </p>
 
-<%= yield %>
+  <% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end %>
+
+  <%= yield %>
 
 </body>
 </html>

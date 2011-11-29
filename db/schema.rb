@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129164804) do
+ActiveRecord::Schema.define(:version => 20111129174939) do
 
   create_table "open_id_associations", :force => true do |t|
     t.binary  "server_url", :null => false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(:version => 20111129164804) do
     t.string  "server_url", :null => false
     t.integer "timestamp",  :null => false
     t.string  "salt",       :null => false
+  end
+
+  create_table "project_mappings", :force => true do |t|
+    t.string   "campfire_token"
+    t.string   "campfire_room_name"
+    t.string   "created_by"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

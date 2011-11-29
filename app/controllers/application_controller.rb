@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user
+    session['email']
+  end
+
   def self.signed_in? request
     if email = request.session['email']
       return true if email =~ /@crankapps.com$/

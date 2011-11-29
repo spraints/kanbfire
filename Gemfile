@@ -19,6 +19,7 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'omniauth-openid'
+gem 'decent_exposure'
 
 group :development, :test do
   gem 'rspec-rails'
