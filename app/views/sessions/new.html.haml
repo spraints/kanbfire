@@ -1,0 +1,8 @@
+- if params[:message]
+  %p{style: 'color: red'}
+    = params[:message].titleize
+%p
+  You must sign in with a crankapps.com email address.
+%form{action: '/auth/open_id', method: 'post'}
+  = hidden_field_tag 'openid_url', 'https://www.google.com/accounts/o8/id'
+  = submit_tag 'Sign in with google'
