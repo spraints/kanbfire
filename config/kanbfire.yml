@@ -1,0 +1,7 @@
+development:
+  no_campfire: true
+
+test:
+  no_campfire: true
+
+production:

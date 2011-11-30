@@ -23,7 +23,11 @@ class CampfireNotifier
   end
 
   def say message
-    campfire_room.speak message
+    if KanbfireConfig.no_campfire
+      Rails.logger.info "MESSAGE FOR CAMPFIRE: #{message}"
+    else
+      campfire_room.speak message
+    end
   end
 
   def campfire_room

@@ -15,6 +15,7 @@ gem 'haml-rails'
 gem 'omniauth-openid'
 gem 'decent_exposure'
 gem 'tinder'
+gem 'static_config'
 
 group :development, :test do
   gem 'sqlite3'
