@@ -19,6 +19,7 @@ gem 'static_config'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'heroku'
