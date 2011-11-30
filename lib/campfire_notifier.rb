@@ -1,3 +1,5 @@
+require 'active_support/core_ext'
+
 class CampfireNotifier
   attr_reader :project_mapping
 
@@ -15,11 +17,21 @@ class CampfireNotifier
     resource = params[:resource]
     '[kanbanery] ' +
       case resource[:type]
+      when 'Task'
+        "Task #{resource[:id]} \"#{resource[:title]}\" updated. #{resource[:global_in_context_url]}"
+      when 'Comment'
+        "Comment added to task #{resource[:task_id]}: \"#{resource[:body]}\" #{url_for resource[:task_id]}"
       when 'LoggedTaskEvent'
-        "#{resource[:name].humanize} https://kanbanery.com/tasks/#{resource[:task_id]}/in-context"
+        "#{resource[:name].humanize}. #{url_for resource[:task_id]}"
+      when 'Blocking'
+        "Task #{resource[:task_id]} is blocked! \"#{resource[:blocking_message]}\" #{url_for resource[:task_id]}"
       else
-        "#{resource[:type]} #{resource[:id]} \"#{resource[:title]}\" was updated. #{resource[:global_in_context_url]}"
+        "#{resource[:type].humanize}. #{url_for resource[:task_id]}"
       end
+  end
+
+  def url_for task_id
+    task_id && "https://kanbanery.com/tasks/#{task_id}/in-context"
   end
 
   def say message
