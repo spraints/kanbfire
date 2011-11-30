@@ -10,10 +10,10 @@ class KanbaneryUpdatesController < ApplicationController
     end
   end
 
-  expose(:kanbanery_updates) { project_mapping.kanbanery_updates }
+  expose(:kanbanery_updates) { project_mapping.kanbanery_updates.order('created_at desc').limit(20) }
 
   def create
-    kanbanery_updates.create :body => params.inspect
+    kanbanery_updates.create :body => params.to_json
     CampfireNotifier.new(project_mapping).notify(params)
     head :ok
   end
