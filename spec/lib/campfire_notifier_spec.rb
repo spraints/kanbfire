@@ -32,6 +32,11 @@ describe CampfireNotifier do
       it { should == '[kanbanery] Task 12345 is blocked! "This is why it is blocked." https://kanbanery.com/tasks/12345/in-context' }
     end
 
+    context 'Column' do
+      let(:resource) { { "id"=>"55555", "created_at"=>"2011-11-29T19:16:03+00:00", "updated_at"=>"2011-12-05T13:19:48+00:00", "project_id"=>"8765", "name"=>"My Column", "fixed"=>"false", "position"=>"3", "type"=>"Column" } }
+      it { should == '[kanbanery] Column "My Column" modified.' }
+    end
+
     context 'unknown event type' do
       let(:resource) { { "type" => "Something_Else" } }
       it { should == '[kanbanery] Something else. ' }

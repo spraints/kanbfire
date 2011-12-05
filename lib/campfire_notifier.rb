@@ -25,6 +25,8 @@ class CampfireNotifier
         "#{resource[:name].humanize}. #{url_for resource[:task_id]}"
       when 'Blocking'
         "Task #{resource[:task_id]} is blocked! \"#{resource[:blocking_message]}\" #{url_for resource[:task_id]}"
+      when 'Column'
+        "Column \"#{resource[:name]}\" modified."
       else
         "#{resource[:type].humanize}. #{url_for resource[:task_id]}"
       end
