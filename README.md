@@ -14,7 +14,7 @@ a campfire room.
     # update the rules in `#sign_in_from_omniauth` and
     # `signed_in?` to match your rules about who can use
     # the app.
-    heroku create
+    heroku create --stack cedar
     git push heroku master
     heroku run rake db:schema:load
 
