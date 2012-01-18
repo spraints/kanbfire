@@ -27,6 +27,8 @@ class CampfireNotifier
         "Task #{resource[:task_id]} is blocked! \"#{resource[:blocking_message]}\" #{url_for resource[:task_id]}"
       when 'Column'
         "Column \"#{resource[:name]}\" modified."
+      when 'GitCommit'
+        return false
       else
         "#{resource[:type].humanize}. #{url_for resource[:task_id]}"
       end
@@ -37,10 +39,12 @@ class CampfireNotifier
   end
 
   def say message
-    if KanbfireConfig.no_campfire
-      Rails.logger.info "MESSAGE FOR CAMPFIRE: #{message}"
-    else
-      campfire_room.speak message
+    if message
+      if KanbfireConfig.no_campfire
+        Rails.logger.info "MESSAGE FOR CAMPFIRE: #{message}"
+      else
+        campfire_room.speak message
+      end
     end
   end
 

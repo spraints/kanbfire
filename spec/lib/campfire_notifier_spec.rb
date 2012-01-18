@@ -37,6 +37,11 @@ describe CampfireNotifier do
       it { should == '[kanbanery] Column "My Column" modified.' }
     end
 
+    context 'Gitcommit' do
+      let(:resource) { { "id"=>"4784", "created_at"=>"2012-01-18T19:16:14+00:00", "updated_at"=>"2012-01-18T19:16:14+00:00","commit_id"=>"a1b2c37890abcdef1234567890abcdef12345678","message"=>"Commit message. #12345","url"=>"https://github.com/spraints/kanbfire/commit/a1b2c37890abcdef1234567890abcdef12345678","author_email"=>"author@example.com","author_name"=>"Author Name","timestamp"=>"2012-01-18T19:16:08+00:00","task_id"=>"12345","short_commit_id"=>"a1b2c3","gravatar_url"=>"https://secure.gravatar.com/avatar/example?s=10","type"=>"GitCommit" } }
+      it { should == false }
+    end
+
     context 'unknown event type' do
       let(:resource) { { "type" => "Something_Else" } }
       it { should == '[kanbanery] Something else. ' }
