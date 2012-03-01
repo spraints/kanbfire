@@ -18,20 +18,34 @@ class CampfireNotifier
     '[kanbanery] ' +
       case resource[:type]
       when 'Task'
-        "Task #{resource[:id]} \"#{resource[:title]}\" updated. #{resource[:global_in_context_url]}"
+        if new? resource
+          "Task #{resource[:id]} \"#{resource[:title]}\" added. #{resource[:global_in_context_url]}"
+        else
+          return false
+        end
       when 'Comment'
         "Comment added to task #{resource[:task_id]}: \"#{resource[:body]}\" #{url_for resource[:task_id]}"
-      when 'LoggedTaskEvent'
-        "#{resource[:name].humanize}. #{url_for resource[:task_id]}"
       when 'Blocking'
         "Task #{resource[:task_id]} is blocked! \"#{resource[:blocking_message]}\" #{url_for resource[:task_id]}"
-      when 'Column'
-        "Column \"#{resource[:name]}\" modified."
-      when 'GitCommit'
+      when 'Subtask'
+        change =
+          if new? resource
+            "added"
+          elsif resource[:completed] == 'true'
+            "completed"
+          else
+            "updated"
+          end
+        "Subtask \"#{resource[:body]}\" #{change}. #{url_for resource[:task_id]}"
+      when 'GitCommit', 'Column', 'LoggedTaskEvent'
         return false
       else
         "#{resource[:type].humanize}. #{url_for resource[:task_id]}"
       end
+  end
+
+  def new? resource
+    resource[:created_at] == resource[:updated_at]
   end
 
   def url_for task_id
